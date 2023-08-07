@@ -140,7 +140,11 @@ app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/reviews", reviewRoutes);
 
 app.get("/", (req, res) => {
-  res.render("home");
+  // Assuming `req.user` is available and populated with the authenticated user.
+  const currentUser = req.user; // Assuming the user object is stored in req.user
+
+  // Render the home view and pass the currentUser variable to it
+  res.render("home", { currentUser });
 });
 
 app.all("*", (req, res, next) => {
